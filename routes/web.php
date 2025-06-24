@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Usercontroller;
+use App\Http\Controllers\Namecontroller;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +25,7 @@ Route::get('/about/{name}'  , function($name){
 
 
 /* Redirect the page
-means open home kary ho open about jaye .
+means open home kary to open about jaye .
      Route::Redirect('/home' , '/about/anil'); */
 
  //controller calls
@@ -31,9 +33,11 @@ means open home kary ho open about jaye .
  Route::get('/about' , [Usercontroller::class , 'hello']);
  Route::get('/new/{name}' , [Usercontroller::class , 'new']);
  Route::get('/news' , [Usercontroller::class  ,'my']);
- Route::get('/get/{name}' , [Usercontroller::class ,'miss']);
-Route::get('/admin' , [Usercontroller::class , 'adminlogin']);
+ Route::get('/userr/{namme}' , [Usercontroller::class , 'myuser']);//passing name
+ Route::get('/myview' , [Usercontroller::class , 'view']);
+ Route::get('/hellouser/{name}' , [Usercontroller::class , 'getuser']); //passing the name
+ Route::get('/admin' , [Usercontroller::class , 'adminLogin']);
 
-Route::get('/myhome' , function(){
-return view('myhome');
-});
+
+ Route::get('/myname',[Namecontroller::class , 'myName']);
+ Route::get('mycontact' , [Namecontroller::class , 'myCon']);
